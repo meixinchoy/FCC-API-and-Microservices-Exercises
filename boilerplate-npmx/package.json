@@ -1,0 +1,27 @@
+{
+	"name": "fcc-learn-npm-package-json",
+	"author": "Mei Xin",
+	"description": "learning how to manage packages using npm with fcc",
+	"keywords": [
+		"npm",
+		"freecodecamp",
+		"glitch"
+	],
+	"license": "MIT",
+	"version": "1.2.0",
+	"dependencies": {
+		"express": "^4.14.0",
+		"moment": "^2.10.2"
+	},
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": "8.11.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://idontknow/todo.git"
+	}
+}
