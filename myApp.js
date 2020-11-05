@@ -14,6 +14,7 @@ app.use("/",
 
 // --> 11)  Mount the body-parser middleware  here
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()) // parse application/json
 console.log(bodyParser);
 
 /** 1) Meet the node console. */
@@ -87,7 +88,9 @@ app.get("/name", (req, res) => {
 
 
 /** 12) Get data form POST  */
-
+app.post("/name", (req, res) => {
+  res.json({ name: req.body.first + " " + req.body.last })
+})
 
 
 // This would be part of the basic setup of an Express app
