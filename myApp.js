@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+require('dotenv').config();
 
 // --> 7)  Mount the Logger middleware here
 app.use("/",
@@ -42,13 +43,13 @@ app.get("/json", (req, res) => {
 });
 
 /** 6) Use the .env file to configure the app */
-process.env.MESSAGE_STYLE = "uppercase"
-
 app.get("/json", (req, res) => {
-  var response = "Hello json";
+  var response;
 
-  if (process.env.MESSAGE_STYLE === "uppercase") {
+  if (process.env.MESSAGE_STYLE === 'uppercase') {
     response = "HELLO JSON";
+  } else {
+    response = "Hello json";
   }
   res.json({
     message: response
