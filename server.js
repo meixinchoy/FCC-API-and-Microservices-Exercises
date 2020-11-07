@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 require("dotenv").config()
 
-const mongoString = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@fcc-learn-mongodb-shard-00-00.rlmjk.mongodb.net:27017,fcc-learn-mongodb-shard-00-01.rlmjk.mongodb.net:27017,fcc-learn-mongodb-shard-00-02.rlmjk.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-2g9abb-shard-0&authSource=admin&retryWrites=true&w=majority`
+const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_NAME}.rlmjk.mongodb.net/fcc-learn-mongoDB?retryWrites=true&w=majority`
 
 mongoose.connect(mongoString, { useUnifiedTopology: true, useNewUrlParser: true })
 
