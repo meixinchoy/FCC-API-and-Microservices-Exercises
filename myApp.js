@@ -88,12 +88,11 @@ var createManyPeople = function (arrayOfPeople, done) {
 // In its simplest usage, `Model.find()` accepts a **query** document (a JSON
 // object ) as the first argument, and returns an **array** of matches.
 // It supports an extremely wide range of search options. Check it in the docs.
-// Use the function argument `personName` as search key.
 let personName = "Ren";
 var findPeopleByName = function (personName, done) {
   Person.find({ name: personName }, function (err, personFound) {
     if (err) return console.log(err);
-    done(null, console.log(personFound));
+    done(null, personFound);
   });
 };
 
@@ -102,29 +101,23 @@ var findPeopleByName = function (personName, done) {
 // `Model.findOne()` behaves like `.find()`, but it returns **only one**
 // document, even if there are more. It is especially useful
 // when searching by properties that you have declared as unique.
-// Find just one person which has a certain food in her favorites,
-// using `Model.findOne() -> Person`. Use the function
-// argument `food` as search key
-
 var findOneByFood = function (food, done) {
-
-  done(null/*, data*/);
-
+  Person.findOne({ favoriteFoods: food }, function (err, data) {
+    if (err) return console.log(err);
+    done(null, data);
+  });
 };
 
 /** 7) Use `Model.findById()` */
 
 // When saving a document, mongodb automatically add the field `_id`,
-// and set it to a unique alphanumeric key. Searching by `_id` is an
-// extremely frequent operation, so `moongose` provides a dedicated
-// method for it. Find the (only!!) person having a certain Id,
-// using `Model.findById() -> Person`.
-// Use the function argument 'personId' as search key.
-
+// and set it to a unique alphanumeric key.`moongose` provides a dedicated
+// method for it. Find the (only!!) person having a certain Id, using `Model.findById() -> Person`.
 var findPersonById = function (personId, done) {
-
-  done(null/*, data*/);
-
+  Person.findById(personId, function (err, data) {
+    if (err) return console.log(err);
+    done(null, data);
+  });
 };
 
 /** # CR[U]D part III - UPDATE # 
