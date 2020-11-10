@@ -155,15 +155,25 @@ const findEditThenSave = (personId, done) => {
 // Some more advanced features (i.e. pre/post hooks, validation) beahve
 // differently with this approach, so the 'Classic' method is still useful in
 // many situations. `findByIdAndUpdate()` can be used when searching by Id.
-//
-// Find a person by `name` and set her age to `20`. Use the function parameter
-// `personName` as search key.
-//
-// Hint: We want you to return the **updated** document. In order to do that
-// you need to pass the options document `{ new: true }` as the 3rd argument
-// to `findOneAndUpdate()`. By default the method
-// passes the unmodified object to its callback.
-
+/*
+var findAndUpdate = function (personName, done) {
+  var ageToSet = 20;
+  Person.findOne({ name: personName }, function (err, personFound) {
+    if (err) return console.log(err);
+    personFound.age = ageToSet
+    personFound.save((err, updatedPerson) => {
+      if (err) return console.log(err);
+      done(null, updatedPerson);
+    })
+  })
+};*/
+const findAndUpdate = (personName, done) => {
+  const ageToSet = 20;
+  Person.findOneAndUpdate({ name: personName }, { age: ageToSet }, { new: true }, (err, updatedDoc) => {
+    if (err) return console.log(err);
+    done(null, updatedDoc);
+  })
+};
 
 /** # CRU[D] part IV - DELETE #
 /*  =========================== */
